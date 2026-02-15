@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@theme {
+  --color-dark: #0d1117;
+  --color-card: #161b22;
+  --color-muted: #21262d;
+  --color-orange: #f97316;
+  --color-orange-light: #fb923c;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0d1117;
+  color: #f0f6fc;
+  font-family: Inter, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scroll padding za sticky header */
+:target {
+  scroll-margin-top: 80px;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0d1117;
+}
+::-webkit-scrollbar-thumb {
+  background: #f97316;
+  border-radius: 3px;
+}
+
+/* Animacija za hero */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.7s ease forwards;
+}
+
+.animate-delay-100 { animation-delay: 0.1s; }
+.animate-delay-200 { animation-delay: 0.2s; }
+.animate-delay-300 { animation-delay: 0.3s; }
+.animate-delay-400 { animation-delay: 0.4s; }
+
+/* Thermal glow efekat */
+.thermal-glow {
+  box-shadow: 0 0 40px rgba(249, 115, 22, 0.15), 0 0 80px rgba(249, 115, 22, 0.05);
+}
+
+.thermal-glow-text {
+  text-shadow: 0 0 30px rgba(249, 115, 22, 0.5);
+}

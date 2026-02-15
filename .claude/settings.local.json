@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir:*)",
+      "Bash(node --version:*)",
+      "Bash(npm:*)",
+      "Bash(curl:*)",
+      "Bash(netstat:*)",
+      "Bash(wmic logicaldisk get:*)",
+      "Bash(taskkill:*)",
+      "Bash(kill:*)",
+      "Bash(npx tsc:*)",
+      "Bash(node -e:*)",
+      "Bash(ffmpeg:*)",
+      "Bash(node scripts/convert-images.mjs:*)",
+      "Bash(HandBrakeCLI:*)",
+      "Bash(winget:*)",
+      "Bash(choco:*)",
+      "Bash(\"/C/Program Files/HandBrake/HandBrakeCLI.exe\" --version)",
+      "Bash(bash \"E:/Sajtovi/termovizijsko-ispitivanje/scripts/convert-videos.sh\")"
+    ]
+  }
+}
