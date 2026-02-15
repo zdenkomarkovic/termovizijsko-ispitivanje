@@ -30,7 +30,10 @@ function PlayIcon() {
 
 export default function ServiceMediaGallery({ items }: ServiceMediaGalleryProps) {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
-  const total = items.length;
+  const sortedItems = [...items].sort((a, b) =>
+    a.type === b.type ? 0 : a.type === "image" ? -1 : 1
+  );
+  const total = sortedItems.length;
 
   const openLightbox = (index: number) => setLightboxIndex(index);
   const closeLightbox = () => setLightboxIndex(null);
@@ -59,7 +62,7 @@ export default function ServiceMediaGallery({ items }: ServiceMediaGalleryProps)
     };
   }, [lightboxIndex]);
 
-  const currentItem = lightboxIndex !== null ? items[lightboxIndex] : null;
+  const currentItem = lightboxIndex !== null ? sortedItems[lightboxIndex] : null;
 
   if (items.length === 0) return null;
 
@@ -67,7 +70,7 @@ export default function ServiceMediaGallery({ items }: ServiceMediaGalleryProps)
     <div className="mt-8">
       {/* Grid */}
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-3">
-        {items.map((item, index) => {
+        {sortedItems.map((item, index) => {
           const src = buildSrc(item.folder, item.file);
           return (
             <button
@@ -87,9 +90,9 @@ export default function ServiceMediaGallery({ items }: ServiceMediaGalleryProps)
               ) : (
                 <>
                   <video
-                    src={src}
+                    src={`${src}#t=0.001`}
                     className="w-full h-full object-cover"
-                    preload="none"
+                    preload="metadata"
                     muted
                     playsInline
                   />

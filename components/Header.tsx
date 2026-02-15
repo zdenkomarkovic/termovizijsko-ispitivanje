@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { SITE_PHONE } from "@/lib/constants";
 
 const navLinks = [
@@ -33,7 +34,7 @@ export default function Header() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-[72px]">
           {/* Logo */}
-          <a href="/" className="group">
+          <Link href="/" className="group">
             <Image
               src="/logo.png"
               alt="Termovizija 034"
@@ -42,18 +43,18 @@ export default function Header() {
               className="h-10 w-auto object-contain"
               priority
             />
-          </a>
+          </Link>
 
           {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-1">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
                 className="px-4 py-2 text-sm text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-200"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </nav>
 
@@ -122,14 +123,14 @@ export default function Header() {
         <div className="md:hidden bg-[#0d1117]/98 backdrop-blur-md border-b border-[#21262d]">
           <div className="max-w-6xl mx-auto px-4 py-4 flex flex-col gap-1">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
                 className="px-4 py-3 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-all"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
             <div className="border-t border-[#21262d] mt-2 pt-4 flex flex-col gap-3">
               <a

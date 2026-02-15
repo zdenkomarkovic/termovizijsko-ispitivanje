@@ -160,13 +160,15 @@ export default function Gallery() {
   const [activeCategory, setActiveCategory] = useState("sve");
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
-  const filteredMedia = useMemo(
-    () =>
+  const filteredMedia = useMemo(() => {
+    const base =
       activeCategory === "sve"
         ? allMedia
-        : allMedia.filter((item) => item.categoryId === activeCategory),
-    [activeCategory]
-  );
+        : allMedia.filter((item) => item.categoryId === activeCategory);
+    return [...base].sort((a, b) =>
+      a.type === b.type ? 0 : a.type === "image" ? -1 : 1
+    );
+  }, [activeCategory]);
 
   const total = filteredMedia.length;
 
@@ -269,9 +271,9 @@ export default function Gallery() {
                 ) : (
                   <>
                     <video
-                      src={src}
+                      src={`${src}#t=0.001`}
                       className="w-full h-full object-cover"
-                      preload="none"
+                      preload="metadata"
                       muted
                       playsInline
                     />

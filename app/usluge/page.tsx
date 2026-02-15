@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ServiceMediaGallery from "@/components/ServiceMediaGallery";
@@ -397,7 +398,7 @@ export default function UslugePage() {
 
                 {/* CTA */}
                 <div className="mt-10">
-                  <a
+                  <Link
                     href="/#kontakt"
                     className="inline-flex items-center gap-2 px-6 py-3 bg-orange-500 hover:bg-orange-400 text-white font-semibold rounded-xl transition-all duration-200 shadow-lg shadow-orange-500/20 hover:shadow-orange-500/40 hover:-translate-y-0.5 text-sm sm:text-base"
                   >
@@ -405,7 +406,7 @@ export default function UslugePage() {
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </section>
