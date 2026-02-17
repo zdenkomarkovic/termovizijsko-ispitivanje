@@ -83,29 +83,44 @@ export default function Contact() {
               </div>
               <div className="w-full h-px bg-gray-200 mb-4" />
               <div className="space-y-3">
-                {contactItems.map((item, idx) => (
-                  <div key={idx} className="flex items-start gap-3">
-                    <div className="w-9 h-9 rounded-lg bg-orange-500/10 flex items-center justify-center text-orange-400 flex-shrink-0">
-                      {item.icon}
-                    </div>
-                    <div className="min-w-0">
-                      <p className="text-xs text-gray-600 mb-0.5">{item.label}</p>
-                      {item.href ? (
-                        <a
-                          href={item.href}
-                          target={item.href.startsWith("http") ? "_blank" : undefined}
-                          rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                          className="text-sm text-orange-400 hover:text-orange-300 transition-colors truncate block"
+                {contactItems.map((item, idx) => {
+                  const isInstagram = item.label === "Instagram";
+                  return (
+                    <div key={idx} className="flex items-start gap-3">
+                      {isInstagram ? (
+                        <div
+                          className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 text-white"
+                          style={{ background: "linear-gradient(135deg, #f58529, #dd2a7b, #8134af, #515bd4)" }}
                         >
-                          {item.value}
-                        </a>
+                          {item.icon}
+                        </div>
                       ) : (
-                        <p className="text-sm text-gray-700">{item.value}</p>
+                        <div className="w-9 h-9 rounded-lg bg-orange-500/10 flex items-center justify-center text-orange-400 flex-shrink-0">
+                          {item.icon}
+                        </div>
                       )}
-                      <p className="text-xs text-gray-500 mt-0.5">{item.note}</p>
+                      <div className="min-w-0">
+                        <p className="text-xs text-gray-600 mb-0.5">{item.label}</p>
+                        {item.href ? (
+                          <a
+                            href={item.href}
+                            target={item.href.startsWith("http") ? "_blank" : undefined}
+                            rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                            className="text-sm font-medium transition-colors truncate block"
+                            style={isInstagram
+                              ? { background: "linear-gradient(135deg, #f58529, #dd2a7b, #8134af)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }
+                              : { color: "#fb923c" }}
+                          >
+                            {item.value}
+                          </a>
+                        ) : (
+                          <p className="text-sm text-gray-700">{item.value}</p>
+                        )}
+                        <p className="text-xs text-gray-500 mt-0.5">{item.note}</p>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
 
