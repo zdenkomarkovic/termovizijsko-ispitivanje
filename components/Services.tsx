@@ -140,17 +140,17 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="usluge" className="py-20 sm:py-28 bg-[#0d1117]">
+    <section id="usluge" className="py-20 sm:py-28 bg-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         {/* Zaglavlje */}
         <div className="text-center mb-16">
           <span className="inline-block px-4 py-1.5 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 text-sm font-medium mb-4">
             Šta radimo
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
             Naše usluge
           </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+          <p className="text-gray-600 max-w-2xl mx-auto text-lg">
             Termovizijska kamera vidi ono što ljudsko oko ne može. Koristimo je
             za brzo i precizno dijagnostikovanje problema u objektima.
           </p>
@@ -162,7 +162,7 @@ export default function Services() {
             <Link
               key={service.id}
               href={`/usluge#${service.slug}`}
-              className="group relative p-6 rounded-2xl bg-[#161b22] border border-[#21262d] hover:border-orange-500/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-orange-500/5 block"
+              className="group relative p-6 rounded-2xl bg-white border border-gray-200 hover:border-orange-500/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-orange-500/5 block"
             >
               {/* Broj */}
               <span className="absolute top-4 right-4 text-xs font-mono text-gray-600 group-hover:text-orange-800 transition-colors">
@@ -175,12 +175,12 @@ export default function Services() {
               </div>
 
               {/* Naslov */}
-              <h3 className="text-white font-semibold text-base mb-2 leading-snug pr-6">
+              <h3 className="text-gray-900 font-semibold text-base mb-2 leading-snug pr-6">
                 {service.title}
               </h3>
 
               {/* Opis */}
-              <p className="text-gray-400 text-sm leading-relaxed mb-3">
+              <p className="text-gray-600 text-sm leading-relaxed mb-3">
                 {service.description}
               </p>
 

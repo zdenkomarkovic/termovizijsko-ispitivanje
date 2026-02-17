@@ -316,23 +316,23 @@ const SERVICES = [
   },
 ];
 
-const SECTION_BG = ["bg-[#0d1117]", "bg-[#080c10]"];
+const SECTION_BG = ["bg-white", "bg-gray-50"];
 
 export default function UslugePage() {
   return (
     <>
       <Header />
-      <main className="pt-[72px] bg-[#0d1117]">
+      <main className="pt-[72px] bg-white">
         {/* Page hero */}
-        <section className="py-16 sm:py-24 bg-[#080c10] border-b border-[#21262d]">
+        <section className="py-16 sm:py-24 bg-gray-50 border-b border-gray-200">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
             <span className="inline-block px-4 py-1.5 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 text-sm font-medium mb-6">
               Termovizijsko ispitivanje
             </span>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
               Naše usluge
             </h1>
-            <p className="text-gray-400 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed">
+            <p className="text-gray-600 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed">
               Termovizijska kamera vidi ono što ljudsko oko ne može. Koristimo
               je za brzo i precizno dijagnostikovanje problema u objektima –
               bez rušenja, bušenja ili nepotrebnih šteta.
@@ -347,7 +347,7 @@ export default function UslugePage() {
             <section
               key={service.id}
               id={service.slug}
-              className={`py-16 sm:py-24 ${SECTION_BG[isEven ? 0 : 1]} border-b border-[#21262d]/60`}
+              className={`py-16 sm:py-24 ${SECTION_BG[isEven ? 0 : 1]} border-b border-gray-200`}
             >
               <div className="max-w-4xl mx-auto px-4 sm:px-6">
                 {/* Tag */}
@@ -360,16 +360,16 @@ export default function UslugePage() {
                   <div className="w-14 h-14 rounded-2xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-orange-400 shrink-0">
                     {service.icon}
                   </div>
-                  <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white leading-snug">
+                  <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 leading-snug">
                     {service.title}
                   </h2>
                 </div>
 
                 {/* Opisi */}
-                <p className="text-gray-300 text-base sm:text-lg leading-relaxed mb-4">
+                <p className="text-gray-700 text-base sm:text-lg leading-relaxed mb-4">
                   {service.para1}
                 </p>
-                <p className="text-gray-400 text-base leading-relaxed mb-8">
+                <p className="text-gray-600 text-base leading-relaxed mb-8">
                   {service.para2}
                 </p>
 
@@ -386,7 +386,7 @@ export default function UslugePage() {
                       >
                         <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
-                      <span className="text-gray-300 text-sm sm:text-base">{bullet}</span>
+                      <span className="text-gray-700 text-sm sm:text-base">{bullet}</span>
                     </li>
                   ))}
                 </ul>

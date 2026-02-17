@@ -51,8 +51,8 @@ export default function ContactForm() {
           </svg>
         </div>
         <div>
-          <h3 className="text-white font-semibold text-lg mb-1">Poruka poslata!</h3>
-          <p className="text-gray-400 text-sm">Javićemo vam se u najkraćem roku.</p>
+          <h3 className="text-gray-900 font-semibold text-lg mb-1">Poruka poslata!</h3>
+          <p className="text-gray-600 text-sm">Javićemo vam se u najkraćem roku.</p>
         </div>
         <button
           onClick={() => setState("idle")}
@@ -68,7 +68,7 @@ export default function ContactForm() {
     <form onSubmit={handleSubmit} className="space-y-4">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label htmlFor="name" className="block text-sm text-gray-400 mb-1.5">
+          <label htmlFor="name" className="block text-sm text-gray-600 mb-1.5">
             Ime i prezime <span className="text-orange-500">*</span>
           </label>
           <input
@@ -77,11 +77,11 @@ export default function ContactForm() {
             type="text"
             required
             placeholder="Marko Marković"
-            className="w-full px-4 py-3 rounded-xl bg-[#0d1117] border border-[#21262d] text-white placeholder-gray-500 focus:outline-none focus:border-orange-500/60 focus:ring-1 focus:ring-orange-500/30 transition-all text-sm"
+            className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-orange-500/60 focus:ring-1 focus:ring-orange-500/30 transition-all text-sm"
           />
         </div>
         <div>
-          <label htmlFor="phone" className="block text-sm text-gray-400 mb-1.5">
+          <label htmlFor="phone" className="block text-sm text-gray-600 mb-1.5">
             Telefon <span className="text-orange-500">*</span>
           </label>
           <input
@@ -90,13 +90,13 @@ export default function ContactForm() {
             type="tel"
             required
             placeholder="06X XXX XXXX"
-            className="w-full px-4 py-3 rounded-xl bg-[#0d1117] border border-[#21262d] text-white placeholder-gray-500 focus:outline-none focus:border-orange-500/60 focus:ring-1 focus:ring-orange-500/30 transition-all text-sm"
+            className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-orange-500/60 focus:ring-1 focus:ring-orange-500/30 transition-all text-sm"
           />
         </div>
       </div>
 
       <div>
-        <label htmlFor="email" className="block text-sm text-gray-400 mb-1.5">
+        <label htmlFor="email" className="block text-sm text-gray-600 mb-1.5">
           Email <span className="text-gray-500 text-xs">(opciono)</span>
         </label>
         <input
@@ -104,12 +104,12 @@ export default function ContactForm() {
           name="email"
           type="email"
           placeholder="vas@email.com"
-          className="w-full px-4 py-3 rounded-xl bg-[#0d1117] border border-[#21262d] text-white placeholder-gray-500 focus:outline-none focus:border-orange-500/60 focus:ring-1 focus:ring-orange-500/30 transition-all text-sm"
+          className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-orange-500/60 focus:ring-1 focus:ring-orange-500/30 transition-all text-sm"
         />
       </div>
 
       <div>
-        <label htmlFor="message" className="block text-sm text-gray-400 mb-1.5">
+        <label htmlFor="message" className="block text-sm text-gray-600 mb-1.5">
           Poruka <span className="text-orange-500">*</span>
         </label>
         <textarea
@@ -118,7 +118,7 @@ export default function ContactForm() {
           required
           rows={4}
           placeholder="Opišite vaš problem ili uslugu koja vas zanima..."
-          className="w-full px-4 py-3 rounded-xl bg-[#0d1117] border border-[#21262d] text-white placeholder-gray-500 focus:outline-none focus:border-orange-500/60 focus:ring-1 focus:ring-orange-500/30 transition-all text-sm resize-none"
+          className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-orange-500/60 focus:ring-1 focus:ring-orange-500/30 transition-all text-sm resize-none"
         />
       </div>
 
@@ -154,7 +154,7 @@ export default function ContactForm() {
         )}
       </button>
 
-      <p className="text-center text-xs text-gray-400">
+      <p className="text-center text-xs text-gray-600">
         Ili nas pozovite direktno –{" "}
         <a href="tel:0638117527" className="text-orange-400 hover:text-orange-300">
           0638117527

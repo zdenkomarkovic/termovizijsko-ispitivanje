@@ -207,17 +207,17 @@ export default function Gallery() {
   const currentItem = lightboxIndex !== null ? filteredMedia[lightboxIndex] : null;
 
   return (
-    <section id="galerija" className="py-20 sm:py-28 bg-[#080c10]">
+    <section id="galerija" className="py-20 sm:py-28 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Header */}
         <div className="text-center mb-12">
           <span className="inline-block px-4 py-1.5 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 text-sm font-medium mb-4">
             Iz prakse
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
             Galerija radova
           </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+          <p className="text-gray-600 max-w-2xl mx-auto text-lg">
             Stvarni primeri termovizijskih ispitivanja – slike i videi sa terena.
           </p>
         </div>
@@ -229,7 +229,7 @@ export default function Gallery() {
             className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
               activeCategory === "sve"
                 ? "bg-orange-500 text-white shadow-lg shadow-orange-500/20"
-                : "bg-[#161b22] text-gray-400 border border-[#21262d] hover:border-orange-500/40 hover:text-gray-200"
+                : "bg-white text-gray-600 border border-gray-200 hover:border-orange-500/40 hover:text-gray-800"
             }`}
           >
             Sve ({allMedia.length})
@@ -241,7 +241,7 @@ export default function Gallery() {
               className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                 activeCategory === cat.id
                   ? "bg-orange-500 text-white shadow-lg shadow-orange-500/20"
-                  : "bg-[#161b22] text-gray-400 border border-[#21262d] hover:border-orange-500/40 hover:text-gray-200"
+                  : "bg-white text-gray-600 border border-gray-200 hover:border-orange-500/40 hover:text-gray-800"
               }`}
             >
               {cat.title} ({cat.items.length})
@@ -257,7 +257,7 @@ export default function Gallery() {
               <button
                 key={`${item.categoryId}-${item.file}`}
                 onClick={() => openLightbox(index)}
-                className="relative aspect-square overflow-hidden rounded-xl bg-[#161b22] group focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-[#080c10]"
+                className="relative aspect-square overflow-hidden rounded-xl bg-gray-200 group focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-gray-50"
               >
                 {item.type === "image" ? (
                   // eslint-disable-next-line @next/next/no-img-element

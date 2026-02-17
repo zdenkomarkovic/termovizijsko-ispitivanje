@@ -51,17 +51,17 @@ const contactItems = [
 
 export default function Contact() {
   return (
-    <section id="kontakt" className="py-20 sm:py-28 bg-[#0a0d13]">
+    <section id="kontakt" className="py-20 sm:py-28 bg-gray-50">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         {/* Zaglavlje */}
         <div className="text-center mb-16">
           <span className="inline-block px-4 py-1.5 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 text-sm font-medium mb-4">
             Dostupni 24/7
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
             Kontaktirajte nas
           </h2>
-          <p className="text-gray-400 max-w-xl mx-auto">
+          <p className="text-gray-600 max-w-xl mx-auto">
             Imate pitanje ili želite da zakažete pregled? Pišite nam ili
             pozovite – odgovaramo brzo.
           </p>
@@ -71,17 +71,17 @@ export default function Contact() {
           {/* Leva strana - kontakt info */}
           <div className="lg:col-span-2 space-y-4">
             {/* Kontakt kartica - Lazar */}
-            <div className="p-6 rounded-2xl bg-[#161b22] border border-[#21262d]">
+            <div className="p-6 rounded-2xl bg-white border border-gray-200">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-12 h-12 rounded-full bg-orange-500/15 border border-orange-500/20 flex items-center justify-center text-orange-400 font-bold text-lg">
                   LV
                 </div>
                 <div>
-                  <p className="text-white font-semibold">Lazar Vlahović</p>
-                  <p className="text-gray-400 text-sm">Osnivač, Termovizija 034</p>
+                  <p className="text-gray-900 font-semibold">Lazar Vlahović</p>
+                  <p className="text-gray-600 text-sm">Osnivač, Termovizija 034</p>
                 </div>
               </div>
-              <div className="w-full h-px bg-[#21262d] mb-4" />
+              <div className="w-full h-px bg-gray-200 mb-4" />
               <div className="space-y-3">
                 {contactItems.map((item, idx) => (
                   <div key={idx} className="flex items-start gap-3">
@@ -89,7 +89,7 @@ export default function Contact() {
                       {item.icon}
                     </div>
                     <div className="min-w-0">
-                      <p className="text-xs text-gray-400 mb-0.5">{item.label}</p>
+                      <p className="text-xs text-gray-600 mb-0.5">{item.label}</p>
                       {item.href ? (
                         <a
                           href={item.href}
@@ -100,9 +100,9 @@ export default function Contact() {
                           {item.value}
                         </a>
                       ) : (
-                        <p className="text-sm text-gray-300">{item.value}</p>
+                        <p className="text-sm text-gray-700">{item.value}</p>
                       )}
-                      <p className="text-xs text-gray-400 mt-0.5">{item.note}</p>
+                      <p className="text-xs text-gray-500 mt-0.5">{item.note}</p>
                     </div>
                   </div>
                 ))}
@@ -116,7 +116,7 @@ export default function Contact() {
                 <p className="text-green-400 text-sm font-medium">
                   Dostupni 24/7
                 </p>
-                <p className="text-gray-400 text-xs">
+                <p className="text-gray-600 text-xs">
                   Pozovite u bilo koje doba
                 </p>
               </div>
@@ -125,8 +125,8 @@ export default function Contact() {
 
           {/* Desna strana - forma */}
           <div className="lg:col-span-3">
-            <div className="p-6 sm:p-8 rounded-2xl bg-[#161b22] border border-[#21262d]">
-              <h3 className="text-white font-semibold text-lg mb-6">
+            <div className="p-6 sm:p-8 rounded-2xl bg-white border border-gray-200">
+              <h3 className="text-gray-900 font-semibold text-lg mb-6">
                 Pošaljite upit
               </h3>
               <ContactForm />

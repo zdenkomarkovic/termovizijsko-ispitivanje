@@ -25,7 +25,7 @@ export default function About() {
   return (
     <>
       {/* Šta je termovizija */}
-      <section id="sta-je-termovizija" className="py-20 sm:py-28 bg-[#0a0d13]">
+      <section id="sta-je-termovizija" className="py-20 sm:py-28 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
             {/* Leva strana */}
@@ -33,17 +33,17 @@ export default function About() {
               <span className="inline-block px-4 py-1.5 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 text-sm font-medium mb-4">
                 Edukacija
               </span>
-              <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 leading-tight">
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6 leading-tight">
                 Šta je termovizijsko ispitivanje?
               </h2>
-              <p className="text-gray-400 leading-relaxed mb-6">
+              <p className="text-gray-600 leading-relaxed mb-6">
                 Termovizijsko ispitivanje je savremena, neinvazivna dijagnostička
                 metoda koja koristi infracrvenu kameru za vizualizaciju
                 toplotnog zračenja. Svaki objekat emituje toplotu – kamera to
                 prikazuje kao obojenu sliku, gde svaka boja predstavlja
                 određenu temperaturu.
               </p>
-              <p className="text-gray-400 leading-relaxed mb-8">
+              <p className="text-gray-600 leading-relaxed mb-8">
                 Na taj način otkrivamo probleme koji su nevidljivi golim okom:
                 mesta gubitka toplote, vlagu u zidovima, curenja instalacija,
                 kvarove grejnih sistema i mnogo više – bez ikakvog oštećenja
@@ -51,8 +51,8 @@ export default function About() {
               </p>
 
               {/* Vizuelni prikaz spektra */}
-              <div className="p-4 rounded-xl bg-[#161b22] border border-[#21262d]">
-                <p className="text-xs text-gray-400 mb-3 uppercase tracking-widest">
+              <div className="p-4 rounded-xl bg-white border border-gray-200">
+                <p className="text-xs text-gray-600 mb-3 uppercase tracking-widest">
                   Termovizijski spektar temperatura
                 </p>
                 <div
@@ -62,7 +62,7 @@ export default function About() {
                       "linear-gradient(90deg, #0a0a3e, #0033cc, #00cccc, #00cc00, #cccc00, #ff6600, #ff0000, #ffffff)",
                   }}
                 />
-                <div className="flex justify-between mt-2 text-xs text-gray-400">
+                <div className="flex justify-between mt-2 text-xs text-gray-600">
                   <span>Hladno</span>
                   <span>Toplo</span>
                   <span>Vruće</span>
@@ -75,7 +75,7 @@ export default function About() {
               {whatIsItems.map((item, idx) => (
                 <div
                   key={idx}
-                  className="p-5 rounded-xl bg-[#161b22] border border-[#21262d] hover:border-orange-500/20 transition-colors"
+                  className="p-5 rounded-xl bg-white border border-gray-200 hover:border-orange-500/20 transition-colors"
                 >
                   <div className="flex items-start gap-3">
                     <div className="w-6 h-6 rounded-full bg-orange-500/15 flex items-center justify-center flex-shrink-0 mt-0.5">
@@ -84,10 +84,10 @@ export default function About() {
                       </svg>
                     </div>
                     <div>
-                      <h3 className="text-white font-semibold text-sm mb-2">
+                      <h3 className="text-gray-900 font-semibold text-sm mb-2">
                         {item.question}
                       </h3>
-                      <p className="text-gray-400 text-sm leading-relaxed">
+                      <p className="text-gray-600 text-sm leading-relaxed">
                         {item.answer}
                       </p>
                     </div>
@@ -100,7 +100,7 @@ export default function About() {
       </section>
 
       {/* O nama */}
-      <section id="o-nama" className="py-20 sm:py-28 bg-[#0d1117]">
+      <section id="o-nama" className="py-20 sm:py-28 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             {/* Leva - info kartice */}
@@ -150,17 +150,17 @@ export default function About() {
               ].map((item, idx) => (
                 <div
                   key={idx}
-                  className="p-5 rounded-xl bg-[#161b22] border border-[#21262d] flex flex-col gap-3"
+                  className="p-5 rounded-xl bg-white border border-gray-200 flex flex-col gap-3"
                 >
                   <div className="w-10 h-10 rounded-lg bg-orange-500/10 flex items-center justify-center text-orange-400">
                     {item.icon}
                   </div>
                   <div>
-                    <p className="text-xs text-gray-400 uppercase tracking-wider">
+                    <p className="text-xs text-gray-600 uppercase tracking-wider">
                       {item.label}
                     </p>
-                    <p className="text-white font-bold text-xl">{item.value}</p>
-                    <p className="text-gray-400 text-xs">{item.sub}</p>
+                    <p className="text-gray-900 font-bold text-xl">{item.value}</p>
+                    <p className="text-gray-600 text-xs">{item.sub}</p>
                   </div>
                 </div>
               ))}
@@ -171,13 +171,13 @@ export default function About() {
               <span className="inline-block px-4 py-1.5 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 text-sm font-medium mb-4">
                 Ko smo mi
               </span>
-              <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 leading-tight">
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6 leading-tight">
                 O kompaniji{" "}
                 <span className="text-orange-500">Termovizija 034</span>
               </h2>
-              <div className="space-y-4 text-gray-400 leading-relaxed">
+              <div className="space-y-4 text-gray-600 leading-relaxed">
                 <p>
-                  <span className="text-white font-semibold">Termovizija 034</span>{" "}
+                  <span className="text-gray-900 font-semibold">Termovizija 034</span>{" "}
                   je kompanija osnovana 2025. godine u Kragujevcu sa jasnim
                   ciljem – unapređenje energetske efikasnosti objekata i
                   podizanje kvaliteta boravka u njima.
@@ -202,7 +202,7 @@ export default function About() {
                   <svg className="w-5 h-5 text-orange-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
                   </svg>
-                  <p className="text-sm text-gray-300 leading-relaxed">
+                  <p className="text-sm text-gray-700 leading-relaxed">
                     <span className="text-orange-400 font-semibold">Naša misija:</span>{" "}
                     Svakom vlasniku objekta pružiti transparentne i pouzdane
                     informacije o stanju nekretnine, uz pomoć najsavremenije

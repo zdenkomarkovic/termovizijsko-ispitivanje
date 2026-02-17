@@ -76,7 +76,7 @@ export default function ServiceMediaGallery({ items }: ServiceMediaGalleryProps)
             <button
               key={`${item.folder}-${item.file}`}
               onClick={() => openLightbox(index)}
-              className="relative aspect-square overflow-hidden rounded-xl bg-[#161b22] group focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-[#080c10]"
+              className="relative aspect-square overflow-hidden rounded-xl bg-gray-200 group focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-white"
             >
               {item.type === "image" ? (
                 // eslint-disable-next-line @next/next/no-img-element

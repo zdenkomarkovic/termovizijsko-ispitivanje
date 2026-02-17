@@ -7,7 +7,7 @@ export default function Hero() {
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
       {/* Pozadina sa thermal efektom */}
-      <div className="absolute inset-0 bg-[#0d1117]">
+      <div className="absolute inset-0 bg-gray-50">
         {/* Radijalni gradijent - narandžasti sjaj */}
         <div
           className="absolute inset-0"
@@ -47,19 +47,19 @@ export default function Hero() {
             </div>
 
             {/* Glavni naslov */}
-            <h1 className="animate-fade-in-up animate-delay-100 text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight mb-6">
+            <h1 className="animate-fade-in-up animate-delay-100 text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 leading-tight mb-6">
               Termovizijsko
               <br />
               <span className="text-orange-500 thermal-glow-text">ispitivanje</span>
             </h1>
 
             {/* Podnaslov */}
-            <p className="animate-fade-in-up animate-delay-200 text-lg sm:text-xl text-gray-400 mb-4">
-              Otkrijte nevidljive probleme vašeg objekta kamerom koja vidi toplotu. Brzo, precizno i bez
-              rušenja.
+            <p className="animate-fade-in-up animate-delay-200 text-lg sm:text-xl text-gray-600 mb-4">
+              Otkrijte nevidljive probleme vašeg objekta kamerom koja vidi toplotu. Brzo, precizno i
+              bez rušenja.
             </p>
 
-            <p className="animate-fade-in-up animate-delay-200 text-base text-gray-400 mb-10">
+            <p className="animate-fade-in-up animate-delay-200 text-base text-gray-600 mb-10">
               Detekcija gubitaka toplote, vlage, curenja instalacija, kontrola grejanja i
               hidroizolacije.
             </p>
@@ -74,7 +74,7 @@ export default function Hero() {
               </a>
               <a
                 href={`tel:${SITE_PHONE}`}
-                className="px-8 py-4 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-orange-500/40 text-white font-semibold rounded-xl transition-all duration-200 text-base hover:-translate-y-0.5"
+                className="px-8 py-4 bg-gray-100 hover:bg-gray-200 border border-gray-300 hover:border-orange-500/40 text-gray-900 font-semibold rounded-xl transition-all duration-200 text-base hover:-translate-y-0.5"
               >
                 Pozovite: {SITE_PHONE}
               </a>
@@ -111,17 +111,17 @@ export default function Hero() {
           ].map((stat) => (
             <div
               key={stat.label}
-              className="flex flex-col items-center gap-1 p-4 rounded-xl bg-white/3 border border-white/5"
+              className="flex flex-col items-center gap-1 p-4 rounded-xl bg-white border border-gray-200"
             >
               <span className="text-2xl font-bold text-orange-400">{stat.value}</span>
-              <span className="text-xs text-gray-400">{stat.label}</span>
+              <span className="text-xs text-gray-600">{stat.label}</span>
             </div>
           ))}
         </div>
       </div>
 
       {/* Scroll indikator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-gray-500">
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-gray-400">
         <span className="text-xs">Skrolujte</span>
         <svg
           className="w-5 h-5 animate-bounce"
