@@ -10,6 +10,7 @@ export const metadata = buildMetadata({
   description:
     "Detaljni opisi svih termovizijskih usluga: detekcija gubitaka toplote, vlage, curenja, provera grejanja, odvoda, hidroizolacije i više. Kragujevac i okolina.",
   url: `${SITE_URL}/usluge`,
+  image: "/opengraph-image",
 });
 
 type MediaItem = { type: "image" | "video"; file: string; folder: string };

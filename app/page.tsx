@@ -10,6 +10,7 @@ export const metadata = buildMetadata({
   title: "Termovizijsko ispitivanje Kragujevac",
   description:
     "Profesionalno termovizijsko ispitivanje u Kragujevcu i Šumadijskom okrugu. Detekcija gubitaka toplote, vlage, curenja instalacija i kontrola grejanja. Kontakt 24/7.",
+  image: "/opengraph-image",
 });
 
 export default function HomePage() {

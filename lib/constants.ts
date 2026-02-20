@@ -1,6 +1,6 @@
 // Globalne konstante sajta
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://termovizija034.rs";
 
 export const SITE_NAME =
   process.env.NEXT_PUBLIC_SITE_NAME ?? "Termovizija 034";
