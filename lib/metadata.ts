@@ -38,7 +38,8 @@ export function buildMetadata({
 }: BuildMetadataOptions = {}): Metadata {
   const fullTitle = title ? `${title} | ${SITE_NAME}` : SITE_NAME;
   const canonicalUrl = url ?? SITE_URL;
-  const ogImage = image ?? `${SITE_URL}/og-image.png`; // Dodaj og-image.png u /public
+  // Ako image nije prosleđen, Next.js automatski koristi app/opengraph-image.tsx
+  const ogImage = image ? (image.startsWith("http") ? image : `${SITE_URL}${image}`) : undefined;
 
   return {
     title: fullTitle,
@@ -53,21 +54,16 @@ export function buildMetadata({
       url: canonicalUrl,
       siteName: SITE_NAME,
       type,
-      images: [
-        {
-          url: ogImage,
-          width: 1200,
-          height: 630,
-          alt: fullTitle,
-        },
-      ],
+      ...(ogImage && {
+        images: [{ url: ogImage, width: 1200, height: 630, alt: fullTitle }],
+      }),
       ...(publishedTime && { publishedTime }),
     },
     twitter: {
       card: "summary_large_image",
       title: fullTitle,
       description,
-      images: [ogImage],
+      ...(ogImage && { images: [ogImage] }),
     },
     ...(noIndex && {
       robots: {
