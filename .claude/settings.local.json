@@ -20,7 +20,9 @@
       "Bash(bash \"E:/Sajtovi/termovizijsko-ispitivanje/scripts/convert-videos.sh\")",
       "Bash(exiftool:*)",
       "Bash(python3:*)",
-      "Bash(python -c:*)"
+      "Bash(python -c:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
     ]
   }
 }
