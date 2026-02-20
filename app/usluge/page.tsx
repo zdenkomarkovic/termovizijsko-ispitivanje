@@ -8,9 +8,8 @@ import { SITE_URL } from "@/lib/constants";
 export const metadata = buildMetadata({
   title: "Naše usluge – Termovizijsko ispitivanje",
   description:
-    "Detaljni opisi svih termovizijskih usluga: detekcija gubitaka toplote, vlage, curenja, provera grejanja, odvoda, hidroizolacije i više. Kragujevac i okolina.",
+    "Sve termovizijske usluge: detekcija gubitaka toplote, vlage, curenja cevi, kontrola grejanja, odvoda i hidroizolacije. Kragujevac i okolina.",
   url: `${SITE_URL}/usluge`,
-  image: "/opengraph-image",
 });
 
 type MediaItem = { type: "image" | "video"; file: string; folder: string };

@@ -9,8 +9,7 @@ import { buildMetadata } from "@/lib/metadata";
 export const metadata = buildMetadata({
   title: "Termovizijsko ispitivanje Kragujevac",
   description:
-    "Profesionalno termovizijsko ispitivanje u Kragujevcu i Šumadijskom okrugu. Detekcija gubitaka toplote, vlage, curenja instalacija i kontrola grejanja. Kontakt 24/7.",
-  image: "/opengraph-image",
+    "Termovizijsko ispitivanje u Kragujevcu – detekcija gubitaka toplote, vlage, curenja cevi i kontrola grejanja. Besplatna procena. Pozovite 24/7.",
 });
 
 export default function HomePage() {

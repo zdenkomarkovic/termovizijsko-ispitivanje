@@ -1,6 +1,5 @@
 import { ImageResponse } from "next/og";
 
-export const runtime = "edge";
 export const alt = "Termovizija 034 – Termovizijsko ispitivanje Kragujevac";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
@@ -14,137 +13,188 @@ export default function Image() {
           height: "100%",
           display: "flex",
           flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          background: "linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 50%, #111 100%)",
+          background: "#0f0f0f",
           fontFamily: "sans-serif",
           position: "relative",
+          overflow: "hidden",
         }}
       >
-        {/* Decorative top bar */}
+        {/* Orange top accent bar */}
         <div
           style={{
             position: "absolute",
             top: 0,
             left: 0,
             right: 0,
-            height: "6px",
-            background: "linear-gradient(90deg, #f97316, #fb923c)",
+            height: "8px",
+            background: "#f97316",
+            display: "flex",
           }}
         />
 
-        {/* Orange glow */}
+        {/* Background glow */}
         <div
           style={{
             position: "absolute",
-            width: "600px",
-            height: "600px",
+            width: "800px",
+            height: "800px",
             borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(249,115,22,0.15) 0%, transparent 70%)",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
+            background: "rgba(249,115,22,0.08)",
+            top: "-200px",
+            right: "-200px",
+            display: "flex",
           }}
         />
 
-        {/* Logo circle */}
+        {/* Left content */}
         <div
           style={{
             display: "flex",
-            alignItems: "center",
+            flexDirection: "column",
             justifyContent: "center",
-            width: "100px",
-            height: "100px",
-            borderRadius: "24px",
-            background: "rgba(249,115,22,0.15)",
-            border: "2px solid rgba(249,115,22,0.4)",
-            marginBottom: "32px",
+            padding: "72px 80px",
+            flex: 1,
+            zIndex: 1,
           }}
         >
-          {/* Thermal camera icon */}
-          <svg width="52" height="52" viewBox="0 0 24 24" fill="none">
-            <path
-              d="M15 8a3 3 0 11-6 0 3 3 0 016 0z"
-              stroke="#f97316"
-              strokeWidth="1.5"
-              strokeLinecap="round"
+          {/* Badge */}
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
+              marginBottom: "32px",
+            }}
+          >
+            <div
+              style={{
+                width: "10px",
+                height: "10px",
+                borderRadius: "50%",
+                background: "#f97316",
+                display: "flex",
+              }}
             />
-            <path
-              d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2z"
-              stroke="#f97316"
-              strokeWidth="1.5"
-            />
-            <path
-              d="M4.93 4.93l14.14 14.14"
-              stroke="#f97316"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              opacity="0.4"
-            />
-          </svg>
+            <span
+              style={{
+                color: "#f97316",
+                fontSize: "20px",
+                fontWeight: "600",
+                letterSpacing: "2px",
+                textTransform: "uppercase",
+              }}
+            >
+              termovizija034.rs
+            </span>
+          </div>
+
+          {/* Main headline */}
+          <div
+            style={{
+              fontSize: "64px",
+              fontWeight: "800",
+              color: "#ffffff",
+              lineHeight: 1.1,
+              letterSpacing: "-1px",
+              marginBottom: "20px",
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
+            <span>Termovizijsko</span>
+            <span>
+              ispitivanje{" "}
+              <span style={{ color: "#f97316" }}>Kragujevac</span>
+            </span>
+          </div>
+
+          {/* Subheadline */}
+          <div
+            style={{
+              fontSize: "24px",
+              color: "#9ca3af",
+              lineHeight: 1.5,
+              marginBottom: "48px",
+              maxWidth: "620px",
+              display: "flex",
+            }}
+          >
+            Detekcija gubitaka toplote, vlage, curenja cevi i kontrola grejanja
+          </div>
+
+          {/* CTA */}
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "24px",
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "12px",
+                padding: "16px 32px",
+                background: "#f97316",
+                borderRadius: "12px",
+                color: "#ffffff",
+                fontSize: "22px",
+                fontWeight: "700",
+              }}
+            >
+              <span>Besplatna procena</span>
+            </div>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "8px",
+                color: "#6b7280",
+                fontSize: "20px",
+              }}
+            >
+              <span>063 811 7527</span>
+            </div>
+          </div>
         </div>
 
-        {/* Title */}
+        {/* Right side – service tags */}
         <div
           style={{
-            fontSize: "72px",
-            fontWeight: "800",
-            color: "#ffffff",
-            letterSpacing: "-2px",
-            lineHeight: 1.1,
-            textAlign: "center",
-            marginBottom: "16px",
+            position: "absolute",
+            right: "60px",
+            top: "50%",
+            transform: "translateY(-50%)",
+            display: "flex",
+            flexDirection: "column",
+            gap: "12px",
           }}
         >
-          Termovizija{" "}
-          <span style={{ color: "#f97316" }}>034</span>
-        </div>
-
-        {/* Subtitle */}
-        <div
-          style={{
-            fontSize: "28px",
-            color: "#9ca3af",
-            textAlign: "center",
-            maxWidth: "700px",
-            lineHeight: 1.4,
-            marginBottom: "48px",
-          }}
-        >
-          Termovizijsko ispitivanje — Kragujevac i Šumadija
-        </div>
-
-        {/* Pills */}
-        <div style={{ display: "flex", gap: "16px" }}>
-          {["Detekcija vlage", "Gubici toplote", "Curenja cevi"].map((tag) => (
+          {[
+            "Gubici toplote",
+            "Vlaga i buđ",
+            "Curenje cevi",
+            "Podno grejanje",
+            "Hidroizolacija",
+          ].map((tag) => (
             <div
               key={tag}
               style={{
-                padding: "10px 20px",
-                borderRadius: "100px",
-                background: "rgba(249,115,22,0.12)",
-                border: "1px solid rgba(249,115,22,0.3)",
+                padding: "10px 18px",
+                borderRadius: "8px",
+                background: "rgba(249,115,22,0.1)",
+                border: "1px solid rgba(249,115,22,0.25)",
                 color: "#fb923c",
-                fontSize: "18px",
+                fontSize: "17px",
                 fontWeight: "500",
+                display: "flex",
+                whiteSpace: "nowrap",
               }}
             >
               {tag}
             </div>
           ))}
-        </div>
-
-        {/* Bottom domain */}
-        <div
-          style={{
-            position: "absolute",
-            bottom: "32px",
-            color: "#4b5563",
-            fontSize: "20px",
-            letterSpacing: "1px",
-          }}
-        >
-          termovizija034.rs
         </div>
       </div>
     ),
