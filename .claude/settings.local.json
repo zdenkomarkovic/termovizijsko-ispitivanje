@@ -22,7 +22,9 @@
       "Bash(python3:*)",
       "Bash(python -c:*)",
       "Bash(git add:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "WebFetch(domain:www.opengraph.xyz)",
+      "WebFetch(domain:termovizija034.rs)"
     ]
   }
 }
