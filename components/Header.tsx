@@ -40,7 +40,7 @@ export default function Header() {
               alt="Termovizija 034"
               width={160}
               height={40}
-              className="h-10 w-auto object-contain"
+              className="h-18 w-auto object-contain"
               priority
             />
           </Link>

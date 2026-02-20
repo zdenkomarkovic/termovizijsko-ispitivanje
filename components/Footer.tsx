@@ -32,7 +32,7 @@ export default function Footer() {
                 alt="Termovizija 034"
                 width={320}
                 height={80}
-                className="h-20 w-auto object-contain"
+                className="h-24 w-auto object-contain"
               />
             </div>
             <p className="text-gray-600 text-sm leading-relaxed mb-4">
