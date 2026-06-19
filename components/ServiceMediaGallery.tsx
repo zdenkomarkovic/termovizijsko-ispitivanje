@@ -2,20 +2,28 @@
 
 import { useState, useEffect } from "react";
 
-type MediaType = "image" | "video";
-
-interface MediaItem {
-  type: MediaType;
-  file: string;
-  folder: string;
-}
+export type MediaItem =
+  | { type: "image"; file: string; folder: string }
+  | { type: "video"; file: string; folder: string }
+  | { type: "sanity-image"; url: string; alt?: string }
+  | { type: "sanity-video"; url: string; alt?: string }
 
 interface ServiceMediaGalleryProps {
   items: MediaItem[];
 }
 
-function buildSrc(folder: string, file: string) {
-  return `/${encodeURIComponent(folder)}/${encodeURIComponent(file)}`;
+function buildSrc(item: MediaItem): string {
+  if (item.type === "sanity-image" || item.type === "sanity-video") return item.url;
+  return `/${encodeURIComponent(item.folder)}/${encodeURIComponent(item.file)}`;
+}
+
+function itemKey(item: MediaItem): string {
+  if (item.type === "sanity-image" || item.type === "sanity-video") return item.url;
+  return `${item.folder}-${item.file}`;
+}
+
+function isVideoItem(item: MediaItem): boolean {
+  return item.type === "video" || item.type === "sanity-video";
 }
 
 function PlayIcon() {
@@ -30,9 +38,13 @@ function PlayIcon() {
 
 export default function ServiceMediaGallery({ items }: ServiceMediaGalleryProps) {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
-  const sortedItems = [...items].sort((a, b) =>
-    a.type === b.type ? 0 : a.type === "image" ? -1 : 1
-  );
+
+  // Slike pre videa, ali bez mešanja redosleda unutar grupe
+  const sortedItems = [...items].sort((a, b) => {
+    const aVideo = isVideoItem(a);
+    const bVideo = isVideoItem(b);
+    return aVideo === bVideo ? 0 : aVideo ? 1 : -1;
+  });
   const total = sortedItems.length;
 
   const openLightbox = (index: number) => setLightboxIndex(index);
@@ -42,7 +54,6 @@ export default function ServiceMediaGallery({ items }: ServiceMediaGalleryProps)
   const goPrev = () =>
     setLightboxIndex((i) => (i === null ? null : (i - 1 + total) % total));
 
-  // Keyboard navigation
   useEffect(() => {
     if (lightboxIndex === null) return;
     const handler = (e: KeyboardEvent) => {
@@ -54,7 +65,6 @@ export default function ServiceMediaGallery({ items }: ServiceMediaGalleryProps)
     return () => window.removeEventListener("keydown", handler);
   });
 
-  // Body scroll lock
   useEffect(() => {
     document.body.style.overflow = lightboxIndex !== null ? "hidden" : "";
     return () => {
@@ -71,23 +81,15 @@ export default function ServiceMediaGallery({ items }: ServiceMediaGalleryProps)
       {/* Grid */}
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-3">
         {sortedItems.map((item, index) => {
-          const src = buildSrc(item.folder, item.file);
+          const src = buildSrc(item);
+          const isVideo = isVideoItem(item);
           return (
             <button
-              key={`${item.folder}-${item.file}`}
+              key={itemKey(item)}
               onClick={() => openLightbox(index)}
               className="relative aspect-square overflow-hidden rounded-xl bg-gray-200 group focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-white"
             >
-              {item.type === "image" ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  src={src}
-                  alt=""
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  loading="lazy"
-                  decoding="async"
-                />
-              ) : (
+              {isVideo ? (
                 <>
                   <video
                     src={`${src}#t=0.001`}
@@ -100,9 +102,18 @@ export default function ServiceMediaGallery({ items }: ServiceMediaGalleryProps)
                     <PlayIcon />
                   </div>
                 </>
-              )}
-              {item.type === "image" && (
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-200" />
+              ) : (
+                <>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={src}
+                    alt={item.type === "sanity-image" ? (item.alt ?? "") : ""}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-200" />
+                </>
               )}
             </button>
           );
@@ -120,21 +131,21 @@ export default function ServiceMediaGallery({ items }: ServiceMediaGalleryProps)
             onClick={(e) => e.stopPropagation()}
           >
             {/* Media */}
-            {currentItem.type === "image" ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
-                src={buildSrc(currentItem.folder, currentItem.file)}
-                alt=""
-                className="max-w-full max-h-[85vh] object-contain rounded-xl shadow-2xl"
-              />
-            ) : (
+            {isVideoItem(currentItem) ? (
               <video
-                key={`${currentItem.folder}-${currentItem.file}`}
-                src={buildSrc(currentItem.folder, currentItem.file)}
+                key={itemKey(currentItem)}
+                src={buildSrc(currentItem)}
                 className="max-w-full max-h-[85vh] rounded-xl shadow-2xl"
                 controls
                 autoPlay
                 playsInline
+              />
+            ) : (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={buildSrc(currentItem)}
+                alt={currentItem.type === "sanity-image" ? (currentItem.alt ?? "") : ""}
+                className="max-w-full max-h-[85vh] object-contain rounded-xl shadow-2xl"
               />
             )}
 

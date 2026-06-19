@@ -1,9 +1,12 @@
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import ServiceMediaGallery from "@/components/ServiceMediaGallery";
+import ServiceMediaGallery, { type MediaItem } from "@/components/ServiceMediaGallery";
 import { buildMetadata } from "@/lib/metadata";
 import { SITE_URL } from "@/lib/constants";
+import { getServiceGalleries, type SanityGalleryItem } from "@/lib/sanity";
+
+export const revalidate = 3600;
 
 export const metadata = buildMetadata({
   title: "Naše usluge – Termovizijsko ispitivanje",
@@ -11,8 +14,6 @@ export const metadata = buildMetadata({
     "Sve termovizijske usluge: detekcija gubitaka toplote, vlage, curenja cevi, kontrola grejanja, odvoda i hidroizolacije. Kragujevac i okolina.",
   url: `${SITE_URL}/usluge`,
 });
-
-type MediaItem = { type: "image" | "video"; file: string; folder: string };
 
 const SERVICES = [
   {
@@ -318,7 +319,9 @@ const SERVICES = [
 
 const SECTION_BG = ["bg-white", "bg-gray-50"];
 
-export default function UslugePage() {
+export default async function UslugePage() {
+  const sanityGalleries = await getServiceGalleries();
+
   return (
     <>
       <Header />
@@ -391,10 +394,17 @@ export default function UslugePage() {
                   ))}
                 </ul>
 
-                {/* Galerija */}
-                {service.media.length > 0 && (
-                  <ServiceMediaGallery items={service.media} />
-                )}
+                {/* Galerija – Sanity stavke prve (najnovije napred), zatim lokalni mediji */}
+                {(() => {
+                  const sanityItems: MediaItem[] = (sanityGalleries[service.slug] ?? []).map(
+                    (item: SanityGalleryItem): MediaItem =>
+                      item.type === "sanity-video"
+                        ? { type: "sanity-video", url: item.url, alt: item.alt }
+                        : { type: "sanity-image", url: item.url, alt: item.alt }
+                  );
+                  const allItems: MediaItem[] = [...sanityItems, ...service.media];
+                  return allItems.length > 0 ? <ServiceMediaGallery items={allItems} /> : null;
+                })()}
 
                 {/* CTA */}
                 <div className="mt-10">

@@ -7,11 +7,10 @@ const nextConfig: NextConfig = {
   // Optimizacija slika - dodaj domene po potrebi
   images: {
     remotePatterns: [
-      // Primer:
-      // {
-      //   protocol: "https",
-      //   hostname: "example.com",
-      // },
+      {
+        protocol: "https",
+        hostname: "cdn.sanity.io",
+      },
     ],
   },
 
@@ -19,7 +18,15 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        source: "/(.*)",
+        // Studio ruta - bez X-Frame-Options da bi preview i Studio funkcionisali
+        source: "/studio(.*)",
+        headers: [
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+        ],
+      },
+      {
+        source: "/((?!studio).*)",
         headers: [
           { key: "X-Content-Type-Options", value: "nosniff" },
           { key: "X-Frame-Options", value: "DENY" },

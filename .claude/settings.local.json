@@ -25,7 +25,11 @@
       "Bash(git commit:*)",
       "WebFetch(domain:www.opengraph.xyz)",
       "WebFetch(domain:termovizija034.rs)",
-      "WebFetch(domain:developers.facebook.com)"
+      "WebFetch(domain:developers.facebook.com)",
+      "PowerShell(npm info *)",
+      "PowerShell(npm list *)",
+      "PowerShell(node -e \"const r = require\\('react'\\); console.log\\(Object.keys\\(r\\).filter\\(k => k.toLowerCase\\(\\).includes\\('effect'\\)\\)\\)\")",
+      "PowerShell(node -e \"const r = require\\('E:/Sajtovi/1-2026/termovizijsko-ispitivanje/node_modules/react/index.js'\\); console.log\\(Object.keys\\(r\\).filter\\(k => k.toLowerCase\\(\\).includes\\('effect'\\)\\)\\)\")"
     ]
   }
 }
