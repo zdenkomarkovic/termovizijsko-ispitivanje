@@ -14,6 +14,17 @@ const nextConfig: NextConfig = {
     ],
   },
 
+  // Otvori Studio direktno na strukturnom prikazu (preskoči home ekran)
+  async redirects() {
+    return [
+      {
+        source: "/studio",
+        destination: "/studio/desk",
+        permanent: false,
+      },
+    ];
+  },
+
   // Headers za bolju sigurnost
   async headers() {
     return [

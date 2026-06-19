@@ -46,10 +46,11 @@ export async function getServiceGalleries(): Promise<Record<string, SanityGaller
 
   try {
     const galleries = await client.fetch<
-      Array<{ service: string; media: SanityMediaItem[] | null }>
+      Array<{ service: string | null; docId: string; media: SanityMediaItem[] | null }>
     >(
       `*[_type == "serviceGallery"]{
         service,
+        "docId": _id,
         "media": media[]{
           _type,
           _key,
@@ -64,12 +65,17 @@ export async function getServiceGalleries(): Promise<Record<string, SanityGaller
     const result: Record<string, SanityGalleryItem[]> = {}
 
     for (const g of galleries) {
-      if (!g.service || !g.media?.length) continue
+      // Prihvati service iz polja ili izvuci iz ID-a (gallery-toplota → toplota)
+      const service =
+        g.service ||
+        (g.docId.startsWith('gallery-') ? g.docId.slice('gallery-'.length) : null)
 
-      // Reverse so the last added appears first
+      if (!service || !g.media?.length) continue
+
+      // Reverse – poslednja dodata prikazuje se prva
       const reversed = [...g.media].reverse()
 
-      result[g.service] = reversed.flatMap((item): SanityGalleryItem[] => {
+      result[service] = reversed.flatMap((item): SanityGalleryItem[] => {
         if (item._type === 'serviceImage' && item.assetRef) {
           return [{
             type: 'sanity-image',
