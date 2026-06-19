@@ -10,7 +10,8 @@ function getSanityClient() {
     projectId,
     dataset,
     apiVersion: '2024-01-01',
-    useCdn: true,
+    // CDN keš može da odloži pojavu novog sadržaja; uvek čitamo direktno iz API-ja
+    useCdn: false,
   })
 }
 
@@ -59,20 +60,22 @@ export async function getServiceGalleries(): Promise<Record<string, SanityGaller
           "assetRef": asset._ref,
           "assetUrl": asset->url
         }
-      }`
+      }`,
+      {},
+      { cache: 'no-store' }
     )
 
     const result: Record<string, SanityGalleryItem[]> = {}
 
     for (const g of galleries) {
-      // Prihvati service iz polja ili izvuci iz ID-a (gallery-toplota → toplota)
+      // Izvuci service iz polja ili iz ID-a formata "gallery-{slug}"
       const service =
         g.service ||
         (g.docId.startsWith('gallery-') ? g.docId.slice('gallery-'.length) : null)
 
       if (!service || !g.media?.length) continue
 
-      // Reverse – poslednja dodata prikazuje se prva
+      // Poslednja dodata slika/video prikazuje se prva
       const reversed = [...g.media].reverse()
 
       result[service] = reversed.flatMap((item): SanityGalleryItem[] => {
@@ -99,7 +102,8 @@ export async function getServiceGalleries(): Promise<Record<string, SanityGaller
     }
 
     return result
-  } catch {
+  } catch (err) {
+    console.error('[Sanity] Greška pri fetch-ovanju galerija:', err)
     return {}
   }
 }

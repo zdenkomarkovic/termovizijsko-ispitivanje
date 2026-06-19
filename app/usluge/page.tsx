@@ -6,7 +6,7 @@ import { buildMetadata } from "@/lib/metadata";
 import { SITE_URL } from "@/lib/constants";
 import { getServiceGalleries, type SanityGalleryItem } from "@/lib/sanity";
 
-export const revalidate = 3600;
+export const revalidate = 60;
 
 export const metadata = buildMetadata({
   title: "Naše usluge – Termovizijsko ispitivanje",

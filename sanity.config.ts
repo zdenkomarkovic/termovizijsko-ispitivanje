@@ -1,6 +1,5 @@
 import { defineConfig } from 'sanity'
 import { structureTool } from 'sanity/structure'
-import { visionTool } from '@sanity/vision'
 import { schemaTypes } from './sanity/schemas'
 
 const SERVICES = [
@@ -34,15 +33,15 @@ export default defineConfig({
                 .title(title)
                 .id(slug)
                 .child(
-                  S.documentTypeList('serviceGallery')
+                  S.editor()
+                    .id(`gallery-${slug}`)
+                    .schemaType('serviceGallery')
+                    .documentId(`gallery-${slug}`)
                     .title(title)
-                    .filter('_type == "serviceGallery" && service == $slug')
-                    .params({ slug })
                 )
             )
           ),
     }),
-    visionTool(),
   ],
 
   schema: {
